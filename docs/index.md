@@ -77,5 +77,5 @@ Webブラウザを起動し、 `http://localhost:9000/` のURLを入力します
 
 ![Welcome To Play](./assets/imgs/WelcomeToPlay.png "Welcome To Play")
 
-
+ここまでの結果は、[v1.0.0](https://github.com/horie-t/realtime-web-in-scala/tree/v1.0.0)タグを参照してください。
 
