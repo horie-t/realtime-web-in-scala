@@ -45,3 +45,37 @@ sudo apt-get update
 sudo apt-get install sbt
 ```
 
+### Play Frameworkのテンプレート・プロジェクトの作成
+
+```bash
+sbt new playframework/play-scala-seed.g8
+```
+
+最後に、以下のように、Playのプロジェクト名、組織名を尋ねられるので、名前を`scala-chat`に、組織名はデフォルトのままにします。
+
+```
+name [play-scala-seed]: scala-chat
+organization [com.example]: 
+```
+
+その後、scala-chatディレクトリにテンプレートのプロジェクトが作成されるので、ディレクトリを移動して、動かしてみます。(最初のrunでは、必要の各種jarのチェックのダウンロードが行われるので、時間がかかります。)
+
+```
+cd scala-chat
+sbt run
+```
+
+起動したら、以下のようなメッセージが出力されます。
+
+```
+[info] p.c.s.AkkaHttpServer - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+
+(Server started, use Enter to stop and go back to the console...)
+```
+
+Webブラウザを起動し、 `http://localhost:9000/` のURLを入力します。以下のような画面が表示されます。
+
+![Welcome To Play](./assets/imgs/WelcomeToPlay.png "Welcome To Play")
+
+
+
