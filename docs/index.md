@@ -79,3 +79,41 @@ Webブラウザを起動し、 `http://localhost:9000/` のURLを入力します
 
 ここまでの結果は、[v1.0.0](https://github.com/horie-t/realtime-web-in-scala/tree/v1.0.0)タグを参照してください。
 
+### Play Frameworkプロジェクトの構成
+
+Play Frameworkにファイルを配置する時は、以下のようなレイアウトで配置します。前記のテンプレートでは生成されないディレクトリも記述しています。
+
+```
+app                      → アプリケーションのソース
+ └ assets                → コンパイルされるアセットのソース
+    └ stylesheets        → LESS CSSのソース等
+    └ javascripts        → CoffeeScriptのソース等
+ └ controllers           → アプリケーションのコントローラのコード
+ └ models                → アプリケーションのビジネス層のコード
+ └ views                 → テンプレート・ファイル
+build.sbt                → アプリケーションのビルド・スクリプト
+conf                     → コンフィグレーション・ファイルとその他のコンパイルされないリソース(クラスパスでアクセスされる)
+ └ application.conf      → メインのコンフィグレーション・ファイル
+ └ routes                → ルート定義
+dist                     → 配布物に含まれる任意のファイル
+public                   → 公開アセット
+ └ stylesheets           → CSSファイル
+ └ javascripts           → Javascriptファイル
+ └ images                → 画像ファイル
+project                  → sbtのコンフィグレーション・ファイル
+ └ build.properties      → sbtプロジェクトのプロパティ
+ └ plugins.sbt           → Play自体のための定義も含めたsbtプラグイン定義
+lib                      → 管理されていない依存ライブラリ
+logs                     → ログ・フォルダ
+ └ application.log       → デフォルトのログ・ファイル
+target                   → 生成物
+ └ resolution-cache      → 依存関係の情報
+ └ scala-2.11
+    └ api                → 生成された API 文書
+    └ classes            → コンパイルされたクラス・ファイル
+    └ routes             → routesから生成されたソース
+    └ twirl              → templatesから生成されたソース
+ └ universal             → アプリケーションのパッケージ
+ └ web                   → コンパイルされたwebのアセット
+test                     → 単体、もしくは機能テストのソースフォルダ
+```
