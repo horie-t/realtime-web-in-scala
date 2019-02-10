@@ -23,7 +23,7 @@ JDKをインストールします。ここでは、[AdoptOpenJDK](https://adopto
 ```bash
 sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 sudo apt-get update
-sudo apt-get install adoptopenjdk-11-jdk-hotspot-set-default
+sudo apt-get install adoptopenjdk-8-jdk-hotspot-set-default
 ```
 
 Javaのライセンス価格やサポート期間については色々と騒ぎになりましたが、以下の通りの結論になりそうです。
@@ -32,7 +32,7 @@ Javaのライセンス価格やサポート期間については色々と騒ぎ�
 * OpenJDK  
   Oracleがメインスポンサーとなっていて、 *無償で* 利用できる開発環境。ただし半年毎にリリースがあり、そのリリースを持って旧バージョンのサポートは終了する。実質的に、半年しか利用できない。
 * AdoptOpenJDK  
-  IBM、Microsoft等がスポンサーとなっている、OpenJDKのビルド済みバイナリの配布プロジェクトによる開発環境。独自に[4年間のLTS](https://adoptopenjdk.net/support.html#roadmap)も設定している。無償でJavaを利用したい場合は、これを利用する事に落ち着きそう。
+  IBM、Microsoft等がスポンサーとなっている、OpenJDKのビルド済みバイナリの配布プロジェクトによる開発環境。独自に[最低4年間のLTS](https://adoptopenjdk.net/support.html#roadmap)も設定している(Java 8の場合は、2023年9月まで)。無償でJavaを利用したい場合は、これを利用する事に落ち着きそう。
 
 #### sbtのインストール
 
@@ -46,6 +46,8 @@ sudo apt-get install sbt
 ```
 
 ### Play Frameworkのテンプレート・プロジェクトの作成
+
+sbtのコマンドを、以下の通り実行してプロジェクトを作成します。
 
 ```bash
 sbt new playframework/play-scala-seed.g8
@@ -65,7 +67,7 @@ cd scala-chat
 sbt run
 ```
 
-起動したら、以下のようなメッセージが出力されます。
+起動したら、以下のようなメッセージが出力されます。(終了するには `Ctrl+D` を押下します。)
 
 ```
 [info] p.c.s.AkkaHttpServer - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
@@ -117,3 +119,28 @@ target                   → 生成物
  └ web                   → コンパイルされたwebのアセット
 test                     → 単体、もしくは機能テストのソースフォルダ
 ```
+
+### Scala.jsとPlay Frameworkの統合プロジェクトの作成
+
+sbtのコマンドを、以下の通り実行してプロジェクトを作成します。
+
+```bash
+sbt new vmunier/play-scalajs.g8
+```
+
+最後に、以下のように、プロジェクト名、組織名、パッケージ名を尋ねられるので、名前を`scala-chat-scalajs`に、組織名、パッケージ名はデフォルトのままにします。
+
+```
+name [play-scalajs]: scala-chat-scalajs
+organization [com.example]: 
+package [com.example.scalachatscalajs]: 
+```
+
+```bash
+cd scala-chat-scalajs
+sbt run
+```
+
+Webブラウザを起動し、 `http://localhost:9000/` のURLを入力します。以下のような画面が表示されます。
+
+![Play With Scala.js](./assets/imgs/PlayWithScalajs.png "Play With Scala.js")
