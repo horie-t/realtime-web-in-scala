@@ -144,3 +144,5 @@ sbt run
 Webブラウザを起動し、 `http://localhost:9000/` のURLを入力します。以下のような画面が表示されます。
 
 ![Play With Scala.js](./assets/imgs/PlayWithScalajs.png "Play With Scala.js")
+
+ここまでの結果は、[v2.0.0](https://github.com/horie-t/realtime-web-in-scala/tree/v2.0.0)タグを参照してください。
